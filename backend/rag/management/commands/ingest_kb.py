@@ -40,8 +40,10 @@ class Command(BaseCommand):
             
         self.stdout.write(self.style.SUCCESS("Ingesting into ChromaDB (this may take a minute)..."))
         
-        # Get vector store and add documents
-        vector_store = get_vector_store()
-        vector_store.add_documents(documents=splits)
-        
-        self.stdout.write(self.style.SUCCESS(f"Successfully ingested {len(splits)} chunks into ChromaDB."))
+        try:
+            # Get vector store and add documents
+            vector_store = get_vector_store()
+            vector_store.add_documents(documents=splits)
+            self.stdout.write(self.style.SUCCESS(f"Successfully ingested {len(splits)} chunks into ChromaDB."))
+        except Exception as e:
+            self.stdout.write(self.style.WARNING(f"Skipping ChromaDB ingestion (API Key missing or invalid): {e}"))

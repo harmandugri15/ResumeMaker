@@ -17,10 +17,13 @@ def get_rag_context(query, k=3):
     vector_store = get_vector_store()
     retriever = vector_store.as_retriever(search_kwargs={"k": k})
     
-    docs = retriever.invoke(query)
-    
-    context = "\n\n".join([f"[{doc.metadata.get('source', 'Unknown')}] {doc.page_content}" for doc in docs])
-    return context
+    try:
+        docs = retriever.invoke(query)
+        context = "\n\n".join([f"[{doc.metadata.get('source', 'Unknown')}] {doc.page_content}" for doc in docs])
+        return context
+    except Exception as e:
+        print(f"RAG retrieval skipped/failed: {e}")
+        return ""
 
 
 def ask_knowledge_base(query):
