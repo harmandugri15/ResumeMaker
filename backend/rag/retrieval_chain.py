@@ -14,10 +14,12 @@ def get_rag_context(query, k=3):
     This is a helper function to just get the text context without running a full LLM chain,
     which is useful when we want to inject it into our own specific prompts.
     """
-    vector_store = get_vector_store()
-    retriever = vector_store.as_retriever(search_kwargs={"k": k})
-    
+    if not getattr(settings, "GEMINI_API_KEY", None):
+        return ""
+        
     try:
+        vector_store = get_vector_store()
+        retriever = vector_store.as_retriever(search_kwargs={"k": k})
         docs = retriever.invoke(query)
         context = "\n\n".join([f"[{doc.metadata.get('source', 'Unknown')}] {doc.page_content}" for doc in docs])
         return context
