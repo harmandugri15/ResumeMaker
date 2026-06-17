@@ -68,7 +68,8 @@ const ResumeReviewPage = () => {
              <NeuButton 
                variant="primary" 
                onClick={handleReview}
-               disabled={!file || isUploading}
+               loading={isUploading}
+               disabled={!file}
                style={{ flex: 1 }}
              >
                {isUploading ? 'Analyzing...' : 'Analyze Now'}

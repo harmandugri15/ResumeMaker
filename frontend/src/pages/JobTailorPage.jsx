@@ -304,7 +304,8 @@ const JobTailorPage = () => {
             variant="primary" 
             style={{ width: '100%' }}
             onClick={handleTailor}
-            disabled={(!jobDescription || (!uploadMode && !selectedResumeId) || (uploadMode && !parsedResumeData)) || isAnalyzing}
+            loading={isAnalyzing}
+            disabled={!jobDescription || (!uploadMode && !selectedResumeId) || (uploadMode && !parsedResumeData)}
           >
             {isAnalyzing ? 'Tailoring with RAG...' : <><Sparkles size={18} /> Generate Tailored Resume</>}
           </NeuButton>

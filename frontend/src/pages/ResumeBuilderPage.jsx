@@ -826,13 +826,8 @@ const ResumeBuilderPage = () => {
               Run a complete RAG-powered analysis against your current resume structure.
             </p>
             
-            <NeuButton 
-              variant="primary" 
-              onClick={handleFullAiReview} 
-              disabled={isAiProcessing}
-              style={{ width: '100%', marginBottom: '32px' }}
-            >
-              {isAiProcessing ? 'Analyzing Resume...' : <><Sparkles size={18} /> Run Full Review</>}
+            <NeuButton variant="primary" style={{ width: '100%', marginBottom: '16px' }} onClick={handleFullAiReview} loading={isAiProcessing} disabled={(!resumeData.summary && !resumeData.experience.length)}>
+              {isAiProcessing ? 'Analyzing Resume...' : 'Run Full Review'}
             </NeuButton>
 
             {aiReviewResults && (
