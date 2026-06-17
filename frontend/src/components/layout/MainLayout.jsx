@@ -17,7 +17,16 @@ const MainLayout = () => {
   const isDashboardRoute = location.pathname.includes('/dashboard') || location.pathname.includes('/build') || location.pathname.includes('/tailor')
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--bg-color)' }}>
+    <>
+    <div className="mobile-overlay">
+      <div style={{ textAlign: 'center', padding: '32px' }}>
+        <FileText size={48} style={{ margin: '0 auto 16px', color: 'var(--accent-primary)' }} />
+        <h2 style={{ marginBottom: '16px' }}>Please Open on Desktop</h2>
+        <p style={{ color: 'var(--text-secondary)' }}>SchemaCV is a powerful professional tool designed for desktop screens. Please visit us on your laptop or desktop to build your resume.</p>
+      </div>
+    </div>
+    
+    <div className="desktop-layout" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--bg-color)' }}>
       {/* Premium Glassmorphic Header */}
       <header style={{
         position: 'sticky',
@@ -63,6 +72,7 @@ const MainLayout = () => {
               <Link to="/templates" style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Templates</Link>
               <Link to="/build" style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Build</Link>
               <Link to="/tailor" style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Tailor</Link>
+              <Link to="/review" style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Review</Link>
               
               <div style={{ width: '1px', height: '24px', background: 'var(--border-color)' }}></div>
               
@@ -177,6 +187,7 @@ const MainLayout = () => {
         </footer>
       )}
     </div>
+    </>
   )
 }
 
