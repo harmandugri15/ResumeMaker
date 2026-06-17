@@ -20,7 +20,6 @@ services:
   - type: web
     name: resumemaker-frontend
     env: static
-    region: ohio
     buildCommand: "npm install && npm run build"
     staticPublishPath: "./dist"
     # Root directory for frontend
