@@ -1,0 +1,273 @@
+/* ==============================================
+   Modern Stack — Creative/Modern Template
+   ============================================== */
+
+/* ---------- Page & Print Setup ---------- */
+@page {
+  size: A4;
+  margin: 1.5cm;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .resume {
+    box-shadow: none;
+    max-width: none;
+  }
+  .section {
+    page-break-inside: avoid;
+  }
+  .entry {
+    page-break-inside: avoid;
+  }
+}
+
+/* ---------- Base Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: #1a202c;
+  background: #f0fdf4;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---------- Resume Container ---------- */
+.resume {
+  max-width: 210mm;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 0;
+}
+
+/* ---------- Header ---------- */
+.header {
+  padding-bottom: 12pt;
+  margin-bottom: 10pt;
+  border-bottom: 3pt solid #0d9488;
+}
+
+.name {
+  font-size: 26pt;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5pt;
+  line-height: 1.1;
+  margin-bottom: 8pt;
+}
+
+.contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3pt 12pt;
+  font-size: 9.5pt;
+  color: #475569;
+}
+
+.contact-item {
+  white-space: nowrap;
+}
+
+.contact-item + .contact-item::before {
+  content: "|";
+  margin-right: 12pt;
+  color: #0d9488;
+  font-weight: 300;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  margin-bottom: 12pt;
+  padding-left: 10pt;
+  border-left: 3pt solid #0d9488;
+}
+
+.section-title {
+  font-size: 14pt;
+  font-weight: 700;
+  color: #0d9488;
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  margin-bottom: 6pt;
+}
+
+/* ---------- Summary ---------- */
+.summary-text {
+  font-size: 10.5pt;
+  color: #334155;
+  line-height: 1.55;
+}
+
+/* ---------- Entries ---------- */
+.entry {
+  margin-bottom: 10pt;
+  padding-bottom: 8pt;
+  border-bottom: 0.5pt solid #e2e8f0;
+}
+
+.entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 2pt;
+}
+
+.entry-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry-title {
+  font-weight: 700;
+  font-size: 11pt;
+  color: #0f172a;
+}
+
+.entry-company {
+  font-size: 10pt;
+  color: #475569;
+}
+
+.entry-date {
+  font-size: 9.5pt;
+  color: #0d9488;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.entry-bullets {
+  list-style-type: disc;
+  padding-left: 16pt;
+  margin-top: 4pt;
+}
+
+.entry-bullets li {
+  font-size: 10.5pt;
+  line-height: 1.45;
+  margin-bottom: 2pt;
+  color: #334155;
+}
+
+.entry-detail {
+  font-size: 10pt;
+  color: #475569;
+  margin-top: 2pt;
+}
+
+.entry-description {
+  font-size: 10.5pt;
+  color: #334155;
+  margin-top: 3pt;
+}
+
+.entry-url {
+  font-size: 9pt;
+  color: #0d9488;
+}
+
+/* ---------- Skills (Pill Badges) ---------- */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8pt;
+}
+
+.skills-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4pt;
+}
+
+.skills-label {
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8pt;
+  color: #475569;
+}
+
+.skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4pt;
+}
+
+.pill {
+  display: inline-block;
+  font-size: 9.5pt;
+  color: #0d9488;
+  background-color: #f0fdfa;
+  border: 1pt solid #99f6e4;
+  padding: 2pt 8pt;
+  border-radius: 10pt;
+  white-space: nowrap;
+}
+
+.pill--small {
+  font-size: 8.5pt;
+  padding: 1pt 6pt;
+}
+
+.skills-pills--small {
+  margin-top: 4pt;
+}
+
+/* ---------- Certifications ---------- */
+.cert-entry {
+  margin-bottom: 4pt;
+  font-size: 10.5pt;
+  display: flex;
+  align-items: baseline;
+  gap: 6pt;
+  flex-wrap: wrap;
+}
+
+.cert-name {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cert-issuer {
+  color: #475569;
+  font-size: 10pt;
+}
+
+.cert-date {
+  margin-left: auto;
+  color: #0d9488;
+  font-size: 9.5pt;
+  font-weight: 600;
+}
+
+/* ---------- Publications ---------- */
+.publication-entry {
+  font-size: 10.5pt;
+  color: #334155;
+  margin-bottom: 4pt;
+  padding-left: 12pt;
+  text-indent: -12pt;
+}
+
+/* ---------- Custom Sections ---------- */
+.custom-content {
+  font-size: 10.5pt;
+  color: #334155;
+  line-height: 1.5;
+}

@@ -1,0 +1,34 @@
+services:
+  # 1. Django Backend Web Service
+  - type: web
+    name: resumemaker-backend
+    env: python
+    region: ohio
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      # Note: Render free tier has ephemeral storage. 
+      # Any SQLite data will be wiped on restart unless a database like Postgres is attached.
+
+  # 2. Vite Frontend Static Site
+  - type: web
+    name: resumemaker-frontend
+    env: static
+    region: ohio
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "./dist"
+    # Root directory for frontend
+    rootDir: frontend
+    envVars:
+      - key: NODE_VERSION
+        value: 20.0.0
+      # Provide the backend URL to the frontend
+      # (Render will dynamically link this if using internal URLs, but we need external for API calls)
+      - key: VITE_API_URL
+        value: https://resumemaker-backend.onrender.com

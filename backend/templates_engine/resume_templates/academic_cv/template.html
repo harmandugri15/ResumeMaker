@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ personal_info.full_name }} — Curriculum Vitae</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="resume">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>{{ personal_info.full_name }}</h1>
+      <div class="contact-info">
+        {% if personal_info.email %}<span>{{ personal_info.email }}</span>{% endif %}
+        {% if personal_info.phone %}<span>{{ personal_info.phone }}</span>{% endif %}
+        {% if personal_info.location %}<span>{{ personal_info.location }}</span>{% endif %}
+        {% if personal_info.linkedin %}<span>{{ personal_info.linkedin }}</span>{% endif %}
+        {% if personal_info.portfolio %}<span>{{ personal_info.portfolio }}</span>{% endif %}
+      </div>
+    </header>
+
+    <!-- Research Interests -->
+    {% if summary %}
+    <section class="section">
+      <h2>Research Interests</h2>
+      <p class="summary-text">{{ summary }}</p>
+    </section>
+    {% endif %}
+
+    <!-- Education -->
+    {% if education %}
+    <section class="section">
+      <h2>Education</h2>
+      {% for edu in education %}
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-primary">
+            <strong class="entry-degree">{{ edu.degree }}{% if edu.field %} in {{ edu.field }}{% endif %}</strong>
+            <span class="entry-institution">{{ edu.institution }}</span>
+          </div>
+          <span class="entry-date">{{ edu.graduation_date }}</span>
+        </div>
+        {% if edu.gpa or edu.honors %}
+        <p class="entry-detail">
+          {% if edu.gpa %}GPA: {{ edu.gpa }}{% endif %}
+          {% if edu.gpa and edu.honors %} · {% endif %}
+          {% if edu.honors %}{{ edu.honors }}{% endif %}
+        </p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <!-- Publications -->
+    {% if publications %}
+    <section class="section">
+      <h2>Publications</h2>
+      <ol class="publications-list">
+        {% for pub in publications %}
+        <li>{{ pub }}</li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+
+    <!-- Experience (Research & Professional) -->
+    {% if experience %}
+    <section class="section">
+      <h2>Research &amp; Professional Experience</h2>
+      {% for job in experience %}
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-primary">
+            <strong class="entry-degree">{{ job.title }}</strong>
+            <span class="entry-institution">{{ job.company }}{% if job.location %}, {{ job.location }}{% endif %}</span>
+          </div>
+          <span class="entry-date">{{ job.start_date }} – {{ job.end_date }}</span>
+        </div>
+        {% if job.bullets %}
+        <ul class="entry-bullets">
+          {% for bullet in job.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <!-- Teaching Experience (via custom_sections or hardcoded) -->
+    {% if custom_sections %}
+    {% for section in custom_sections %}
+    {% if section.title|lower in ['teaching experience', 'teaching', 'courses taught'] %}
+    <section class="section">
+      <h2>{{ section.title }}</h2>
+      <div class="custom-content">{{ section.content }}</div>
+    </section>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    <!-- Skills -->
+    {% if skills %}
+    <section class="section">
+      <h2>Technical Skills</h2>
+      <div class="skills-list">
+        {% if skills.technical %}
+        <p><strong>Methods &amp; Techniques:</strong> {{ skills.technical | join(', ') }}</p>
+        {% endif %}
+        {% if skills.tools %}
+        <p><strong>Software &amp; Tools:</strong> {{ skills.tools | join(', ') }}</p>
+        {% endif %}
+        {% if skills.languages %}
+        <p><strong>Programming Languages:</strong> {{ skills.languages | join(', ') }}</p>
+        {% endif %}
+        {% if skills.soft %}
+        <p><strong>Additional Skills:</strong> {{ skills.soft | join(', ') }}</p>
+        {% endif %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Projects -->
+    {% if projects %}
+    <section class="section">
+      <h2>Research Projects</h2>
+      {% for project in projects %}
+      <div class="entry">
+        <div class="entry-header">
+          <strong class="entry-degree">{{ project.name }}</strong>
+          {% if project.url %}<span class="entry-date">{{ project.url }}</span>{% endif %}
+        </div>
+        {% if project.description %}
+        <p class="entry-detail">{{ project.description }}</p>
+        {% endif %}
+        {% if project.technologies %}
+        <p class="entry-detail"><strong>Technologies:</strong> {{ project.technologies | join(', ') }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <!-- Certifications -->
+    {% if certifications %}
+    <section class="section">
+      <h2>Certifications &amp; Awards</h2>
+      {% for cert in certifications %}
+      <div class="entry entry-compact">
+        <strong>{{ cert.name }}</strong>
+        {% if cert.issuer %}<span class="entry-institution"> — {{ cert.issuer }}</span>{% endif %}
+        {% if cert.date %}<span class="entry-date">{{ cert.date }}</span>{% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <!-- Remaining Custom Sections -->
+    {% if custom_sections %}
+    {% for section in custom_sections %}
+    {% if section.title|lower not in ['teaching experience', 'teaching', 'courses taught'] %}
+    <section class="section">
+      <h2>{{ section.title }}</h2>
+      <div class="custom-content">{{ section.content }}</div>
+    </section>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+  </div>
+</body>
+</html>

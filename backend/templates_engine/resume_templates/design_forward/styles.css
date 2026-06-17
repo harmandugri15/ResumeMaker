@@ -1,0 +1,284 @@
+/* ==============================================
+   Design Forward — Creative/Modern Template
+   ============================================== */
+
+/* ---------- Page & Print Setup ---------- */
+@page {
+  size: A4;
+  margin: 1.5cm;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .resume {
+    box-shadow: none;
+    max-width: none;
+  }
+  .section {
+    page-break-inside: avoid;
+  }
+  .timeline-entry {
+    page-break-inside: avoid;
+  }
+}
+
+/* ---------- Base Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: #1a202c;
+  background: #fef7f4;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---------- Resume Container ---------- */
+.resume {
+  max-width: 210mm;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 0;
+}
+
+/* ---------- Header ---------- */
+.header {
+  padding-bottom: 14pt;
+  margin-bottom: 12pt;
+}
+
+.name {
+  font-size: 28pt;
+  font-weight: 800;
+  color: #1a202c;
+  line-height: 1.1;
+  display: inline-block;
+  padding-bottom: 4pt;
+  border-bottom: 4pt solid #e76f51;
+  margin-bottom: 10pt;
+}
+
+.contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3pt 14pt;
+  font-size: 9.5pt;
+  color: #64748b;
+}
+
+.contact-item {
+  white-space: nowrap;
+}
+
+.contact-item + .contact-item::before {
+  content: "/";
+  margin-right: 14pt;
+  color: #e76f51;
+  font-weight: 300;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  margin-bottom: 14pt;
+}
+
+.section-title {
+  font-size: 14pt;
+  font-weight: 700;
+  color: #e76f51;
+  text-transform: uppercase;
+  letter-spacing: 1.5pt;
+  margin-bottom: 8pt;
+  padding-bottom: 4pt;
+  border-bottom: 1pt solid #fed7c7;
+}
+
+/* ---------- Summary ---------- */
+.summary-text {
+  font-size: 10.5pt;
+  color: #334155;
+  line-height: 1.55;
+}
+
+/* ---------- Timeline ---------- */
+.timeline {
+  position: relative;
+  padding-left: 18pt;
+}
+
+/* Vertical timeline line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 4pt;
+  top: 4pt;
+  bottom: 4pt;
+  width: 1.5pt;
+  background-color: #fed7c7;
+}
+
+.timeline-entry {
+  position: relative;
+  margin-bottom: 10pt;
+  padding-bottom: 8pt;
+  border-bottom: 0.5pt solid #f1f5f9;
+}
+
+.timeline-entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Timeline dot */
+.timeline-marker {
+  position: absolute;
+  left: -18pt;
+  top: 3pt;
+  width: 9pt;
+  height: 9pt;
+  background-color: #e76f51;
+  border-radius: 50%;
+  border: 1.5pt solid #ffffff;
+}
+
+.timeline-content {
+  /* Content flows normally next to the marker */
+}
+
+/* ---------- Entry Layout ---------- */
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 2pt;
+}
+
+.entry-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry-title {
+  font-weight: 700;
+  font-size: 11pt;
+  color: #1e293b;
+}
+
+.entry-company {
+  font-size: 10pt;
+  color: #64748b;
+}
+
+.entry-date {
+  font-size: 9.5pt;
+  color: #e76f51;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.entry-bullets {
+  list-style-type: disc;
+  padding-left: 16pt;
+  margin-top: 4pt;
+}
+
+.entry-bullets li {
+  font-size: 10.5pt;
+  line-height: 1.45;
+  margin-bottom: 2pt;
+  color: #334155;
+}
+
+.entry-detail {
+  font-size: 10pt;
+  color: #64748b;
+  margin-top: 2pt;
+}
+
+.entry-description {
+  font-size: 10.5pt;
+  color: #334155;
+  margin-top: 3pt;
+}
+
+.entry-tech {
+  font-size: 10pt;
+  color: #64748b;
+  margin-top: 3pt;
+}
+
+.entry-url {
+  font-size: 9pt;
+  color: #e76f51;
+}
+
+/* ---------- Skills ---------- */
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4pt;
+}
+
+.skills-row {
+  font-size: 10.5pt;
+  line-height: 1.5;
+}
+
+.skills-label {
+  font-weight: 700;
+  color: #e76f51;
+  margin-right: 4pt;
+}
+
+.skills-value {
+  color: #334155;
+}
+
+/* ---------- Certifications ---------- */
+.cert-entry {
+  margin-bottom: 4pt;
+  font-size: 10.5pt;
+}
+
+.cert-name {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.cert-issuer {
+  color: #64748b;
+}
+
+.cert-date {
+  float: right;
+  color: #e76f51;
+  font-size: 9.5pt;
+  font-weight: 600;
+}
+
+/* ---------- Publications ---------- */
+.publication-entry {
+  font-size: 10.5pt;
+  color: #334155;
+  margin-bottom: 4pt;
+  padding-left: 12pt;
+  text-indent: -12pt;
+}
+
+/* ---------- Custom Sections ---------- */
+.custom-content {
+  font-size: 10.5pt;
+  color: #334155;
+  line-height: 1.5;
+}

@@ -1,0 +1,196 @@
+/* ===================================================================
+   SIMPLE IMPACT — Minimalist Typography-Driven Resume
+   No colors, no lines. Pure typographic hierarchy.
+   =================================================================== */
+
+@page {
+  size: A4;
+  margin: 1.5cm;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .resume {
+    max-width: none;
+    padding: 0;
+  }
+  .section {
+    page-break-inside: avoid;
+  }
+  .entry {
+    page-break-inside: avoid;
+  }
+}
+
+/* ---- Reset & Base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 10.5pt;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.resume {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ---- Header ---- */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 0;
+}
+
+h1 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 24pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem 1.2rem;
+  font-size: 9.5pt;
+  color: #444444;
+  line-height: 1.5;
+}
+
+/* ---- Sections ---- */
+.section {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 13pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #111111;
+  margin-bottom: 0.75rem;
+}
+
+/* ---- Entries ---- */
+.entry {
+  margin-bottom: 1rem;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.entry-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.position {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #111111;
+}
+
+.organization {
+  font-size: 10.5pt;
+  font-weight: 400;
+  color: #333333;
+  font-style: italic;
+}
+
+.date {
+  font-size: 9.5pt;
+  font-weight: 400;
+  color: #555555;
+  white-space: nowrap;
+}
+
+.entry-detail {
+  font-size: 10pt;
+  color: #444444;
+  margin-top: 0.2rem;
+}
+
+.entry-bullets {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.35rem;
+}
+
+.entry-bullets li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.25rem;
+  font-size: 10.5pt;
+  color: #222222;
+}
+
+.entry-bullets li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #888888;
+}
+
+/* ---- Summary ---- */
+.summary-text {
+  font-size: 10.5pt;
+  color: #333333;
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+/* ---- Skills ---- */
+.skills-list p {
+  margin-bottom: 0.3rem;
+  font-size: 10.5pt;
+  color: #222222;
+}
+
+.skills-list strong {
+  font-weight: 700;
+  color: #111111;
+}
+
+/* ---- Publications ---- */
+.publications-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.publications-list li {
+  margin-bottom: 0.5rem;
+  font-size: 10pt;
+  color: #333333;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+/* ---- Custom Content ---- */
+.custom-content {
+  font-size: 10.5pt;
+  color: #333333;
+  line-height: 1.7;
+}

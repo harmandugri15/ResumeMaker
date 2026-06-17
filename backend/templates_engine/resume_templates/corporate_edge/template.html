@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ personal_info.full_name }} — Resume</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="resume">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section sidebar-name">
+        <h1 class="name">{{ personal_info.full_name }}</h1>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Contact</h2>
+        {% if personal_info.email %}
+        <p class="sidebar-item">{{ personal_info.email }}</p>
+        {% endif %}
+        {% if personal_info.phone %}
+        <p class="sidebar-item">{{ personal_info.phone }}</p>
+        {% endif %}
+        {% if personal_info.location %}
+        <p class="sidebar-item">{{ personal_info.location }}</p>
+        {% endif %}
+        {% if personal_info.linkedin %}
+        <p class="sidebar-item">{{ personal_info.linkedin }}</p>
+        {% endif %}
+        {% if personal_info.portfolio %}
+        <p class="sidebar-item">{{ personal_info.portfolio }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Sidebar Skills -->
+      {% if skills %}
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Skills</h2>
+        {% if skills.technical %}
+        <div class="sidebar-skill-group">
+          <p class="sidebar-skill-label">Technical</p>
+          {% for skill in skills.technical %}
+          <span class="sidebar-skill-item">{{ skill }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if skills.tools %}
+        <div class="sidebar-skill-group">
+          <p class="sidebar-skill-label">Tools</p>
+          {% for skill in skills.tools %}
+          <span class="sidebar-skill-item">{{ skill }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if skills.languages %}
+        <div class="sidebar-skill-group">
+          <p class="sidebar-skill-label">Languages</p>
+          {% for lang in skills.languages %}
+          <span class="sidebar-skill-item">{{ lang }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if skills.soft %}
+        <div class="sidebar-skill-group">
+          <p class="sidebar-skill-label">Soft Skills</p>
+          {% for skill in skills.soft %}
+          <span class="sidebar-skill-item">{{ skill }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- Sidebar Certifications -->
+      {% if certifications %}
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Certifications</h2>
+        {% for cert in certifications %}
+        <div class="sidebar-cert">
+          <p class="sidebar-cert-name">{{ cert.name }}</p>
+          {% if cert.issuer %}<p class="sidebar-cert-issuer">{{ cert.issuer }}</p>{% endif %}
+          {% if cert.date %}<p class="sidebar-cert-date">{{ cert.date }}</p>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Professional Summary -->
+      {% if summary %}
+      <section class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p class="summary-text">{{ summary }}</p>
+      </section>
+      {% endif %}
+
+      <!-- Experience -->
+      {% if experience %}
+      <section class="section">
+        <h2 class="section-title">Experience</h2>
+        {% for job in experience %}
+        <div class="entry{% if not loop.last %} entry--bordered{% endif %}">
+          <div class="entry-header">
+            <span class="entry-title">{{ job.title }}</span>
+            <span class="entry-date">{{ job.start_date }} — {{ job.end_date }}</span>
+          </div>
+          <div class="entry-sub">
+            <span class="entry-company">{{ job.company }}</span>
+            {% if job.location %}<span class="entry-location">{{ job.location }}</span>{% endif %}
+          </div>
+          {% if job.bullets %}
+          <ul class="entry-bullets">
+            {% for bullet in job.bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      <!-- Education -->
+      {% if education %}
+      <section class="section">
+        <h2 class="section-title">Education</h2>
+        {% for edu in education %}
+        <div class="entry{% if not loop.last %} entry--bordered{% endif %}">
+          <div class="entry-header">
+            <span class="entry-title">{{ edu.degree }}{% if edu.field %} in {{ edu.field }}{% endif %}</span>
+            {% if edu.graduation_date %}<span class="entry-date">{{ edu.graduation_date }}</span>{% endif %}
+          </div>
+          <div class="entry-sub">
+            <span class="entry-company">{{ edu.institution }}</span>
+          </div>
+          {% if edu.gpa or edu.honors %}
+          <p class="entry-detail">
+            {% if edu.gpa %}GPA: {{ edu.gpa }}{% endif %}
+            {% if edu.gpa and edu.honors %} · {% endif %}
+            {% if edu.honors %}{{ edu.honors }}{% endif %}
+          </p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      <!-- Projects -->
+      {% if projects %}
+      <section class="section">
+        <h2 class="section-title">Projects</h2>
+        {% for project in projects %}
+        <div class="entry{% if not loop.last %} entry--bordered{% endif %}">
+          <div class="entry-header">
+            <span class="entry-title">{{ project.name }}</span>
+            {% if project.url %}<span class="entry-url">{{ project.url }}</span>{% endif %}
+          </div>
+          {% if project.description %}
+          <p class="entry-description">{{ project.description }}</p>
+          {% endif %}
+          {% if project.technologies %}
+          <p class="entry-tech"><strong>Technologies:</strong> {{ project.technologies | join(', ') }}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      <!-- Publications -->
+      {% if publications %}
+      <section class="section">
+        <h2 class="section-title">Publications</h2>
+        {% for pub in publications %}
+        <p class="publication-entry">{{ pub }}</p>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      <!-- Custom Sections -->
+      {% if custom_sections %}
+      {% for section in custom_sections %}
+      <section class="section">
+        <h2 class="section-title">{{ section.title }}</h2>
+        <div class="custom-content">{{ section.content }}</div>
+      </section>
+      {% endfor %}
+      {% endif %}
+
+    </main>
+  </div>
+</body>
+</html>
