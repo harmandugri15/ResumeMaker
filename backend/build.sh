@@ -13,3 +13,6 @@ python manage.py migrate
 
 echo "Seeding templates..."
 python seed_templates.py
+
+echo "Ingesting knowledge base for AI Review..."
+python manage.py ingest_kb
