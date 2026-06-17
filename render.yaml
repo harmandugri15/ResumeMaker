@@ -30,6 +30,5 @@ services:
       - key: NODE_VERSION
         value: 20.0.0
       # Provide the backend URL to the frontend
-      # (Render will dynamically link this if using internal URLs, but we need external for API calls)
       - key: VITE_API_URL
-        value: https://resumemaker-backend.onrender.com
+        value: https://resumemaker-backend-ifee.onrender.com/api/
