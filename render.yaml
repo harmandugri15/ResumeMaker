@@ -4,6 +4,7 @@ services:
     name: resumemaker-backend
     env: python
     region: ohio
+    plan: free
     buildCommand: "./build.sh"
     startCommand: "gunicorn config.wsgi:application"
     envVars:
