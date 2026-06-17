@@ -52,7 +52,7 @@ const MainLayout = () => {
               letterSpacing: '-0.05em',
               color: '#fff'
             }}>
-              Resume<span style={{ color: 'var(--accent-primary)' }}>Maker</span>
+              Schema<span style={{ color: 'var(--accent-primary)' }}>CV</span>
             </span>
           </Link>
 
@@ -167,7 +167,7 @@ const MainLayout = () => {
               fontSize: '0.85rem',
               fontFamily: 'var(--font-mono)'
             }}>
-              <div>© {new Date().getFullYear()} ResumeMaker Inc. All rights reserved.</div>
+              <div>© {new Date().getFullYear()} SchemaCV Inc. All rights reserved.</div>
               <div style={{ display: 'flex', gap: '24px' }}>
                 <a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Privacy Policy</a>
                 <a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Terms of Service</a>
